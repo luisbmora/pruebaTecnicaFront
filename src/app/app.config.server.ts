@@ -1,11 +1,20 @@
-import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
-import { provideServerRendering } from '@angular/platform-server';
-import { appConfig } from './app.config';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { routes } from './app.routes';
+import { CustomerFormComponent } from './components/customers/customer-form/customer-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const serverConfig: ApplicationConfig = {
+export const appConfig: ApplicationConfig = {
   providers: [
-    provideServerRendering()
-  ]
+    provideRouter(routes),
+    provideHttpClient(),
+    provideForms(),
+    importProvidersFrom(
+      BrowserModule,
+      ReactiveFormsModule
+    )
+  ],
+  standaloneComponents: [CustomerFormComponent] // Registrar el componente aquí
 };
-
-export const config = mergeApplicationConfig(appConfig, serverConfig);

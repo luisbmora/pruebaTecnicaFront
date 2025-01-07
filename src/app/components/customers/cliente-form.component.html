@@ -1,0 +1,13 @@
+<h2>{{ isEditing ? 'Editar Cliente' : 'Crear Cliente' }}</h2>
+
+<div *ngIf="cargando">
+  <p>Cargando...</p>
+</div>
+
+<div *ngIf="error">
+  <p style="color: red;">Error: {{ error }}</p>
+</div>
+
+<form [formGroup]="clienteForm" (ngSubmit)="guardarCliente()" *ngIf="!cargando">
+  <label for="nombre">Nombre:</label><br>
+  <input type="text" id
