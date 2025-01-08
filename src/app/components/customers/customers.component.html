@@ -20,7 +20,7 @@
 
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="newCustomer.email" required>
+        <input type="email" id="correo_electronico" name="correo_electronico" [(ngModel)]="newCustomer.correo_electronico" required>
       </div>
 
       <button type="submit">Agregar Cliente</button>
@@ -45,7 +45,7 @@
           <td>{{customer.nombre}}</td>
           <td>{{customer.apellido}}</td>
           <td>{{customer.domicilio}}</td>
-          <td>{{customer.email}}</td>
+          <td>{{customer.correo_electronico}}</td>
           <td>
             <button (click)="deleteCustomer(customer.id!)">Eliminar</button>
           </td>
